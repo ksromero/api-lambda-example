@@ -24,7 +24,7 @@ that we can attach.
 I used the [single purpose function](https://github.com/cdk-patterns/serverless/tree/main/the-lambda-trilogy)
 in lambda trilogy. Functions are grouped into module and each module are attached to an API gateway and [glued together using custom domain](https://www.serverless.com/blog/api-gateway-multiple-services/).
 
-![image]()
+![architecture-image](https://github.com/ksromero/api-lambda-example/blob/master/_pics-for-readme_/architecture.png)
 ## Folder structure
 Top folder is represented by module name `(except for repositories)`, each files under `src` are lambda functions.
 
