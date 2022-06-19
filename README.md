@@ -10,7 +10,7 @@ that we can attach.
 
 ## Techs Used
 
-* [Node js](https://nodejs.org/en/) / Typescript
+* [Node js](https://nodejs.org/en/) / [Typescript](https://www.typescriptlang.org/)
 * [AWS (Lambda, API Gateway, Route 53)](https://aws.amazon.com/)
 * [Serverless Framework](https://github.com/serverless/serverless)
 
