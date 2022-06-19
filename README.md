@@ -24,7 +24,7 @@ that we can attach.
 I used the [single purpose function](https://github.com/cdk-patterns/serverless/tree/main/the-lambda-trilogy)
 in lambda trilogy. Functions are grouped into module and each module are attached to an API gateway and [glued together using custom domain](https://www.serverless.com/blog/api-gateway-multiple-services/).
 
-![architecture-image](https://github.com/ksromero/api-lambda-example/blob/master/_pics-for-readme_/architecture.png)
+![image]()
 ## Folder structure
 Top folder is represented by module name `(except for repositories)`, each files under `src` are lambda functions.
 
@@ -50,14 +50,20 @@ Top folder is represented by module name `(except for repositories)`, each files
 
 **Notes:** if we build or test the project there's additional folder included like `coverage` and `dist`
 ## API reference
-```
-<API_GATEWAY_URL>/user-management/users // get all users //(GET)
-<API_GATEWAY_URL>/user-management/user // create user // (POST)
-<API_GATEWAY_URL>/post-management/posts // get all posts // (GET)
-<API_GATEWAY_URL>/post-management/post // create post // (POST)
-<API_GATEWAY_URL>/user-post-management/users-posts // get all users posts //(GET)
-<API_GATEWAY_URL>/user-post-management/user-post // attach post to user // (POST)
-```
+
+* <API_GATEWAY_URL>/user-management/users `// get all users // (GET)`
+* <API_GATEWAY_URL>/user-management/user `// create user // (POST)`
+  * `{ "name": "test", "dailyLimit": 2 }`
+* <API_GATEWAY_URL>/post-management/posts `// get all posts // (GET)`
+* <API_GATEWAY_URL>/post-management/post `// create post // (POST)`
+  * `{"title": "test6", "description": "desc6"}`
+* <API_GATEWAY_URL>/user-post-management/users-posts `// get all users posts // (GET)`
+* <API_GATEWAY_URL>/user-post-management/user-post `// attach post to user // (POST)`
+  * posts ids and user id
+  * `{
+      posts: ["62aace7f0406a73d0c3742ec", "62aad0631e145e6b829d2625"],
+    userId: "62aae23a7e64ab93f1b6eedc"}`
+
 ## Todos maybe
 * `CI/CD` for each module and if we commit our code only the changed files under a specific module should be deployed (monorepo), I'm still exploring this and still not sure how to implement it lol.
 * `AWS cognito` for auth purpose and to protect the API's
