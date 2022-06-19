@@ -1,6 +1,6 @@
-import mongoose from 'mongoose'
+import mongoose, { ConnectionStates } from 'mongoose'
 
-let isConnected: any
+let isConnected: boolean | ConnectionStates
 
 export default function connectDb(uri: string) {
   return new Promise((resolve, reject) => {
