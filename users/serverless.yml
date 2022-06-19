@@ -1,0 +1,41 @@
+service: users
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  stage: dev
+
+plugins:
+  - serverless-offline
+  - serverless-domain-manager
+
+custom:
+  customDomain:
+    domainName: <custom-domain-name>
+    basePath: 'user-management'
+    stage: ${self:provider.stage}
+    createRoute53Record: true
+
+package:
+  patterns:
+    - '!src/**'
+    - '!tests/**'
+    - '!tsconfig.json'
+    - '!jest.config.js'
+    - '!coverage/**'
+
+functions:
+  getAllUsersFn:
+    handler: dist/getAllUsers.handler
+    name: user-api-dev-get-users
+    events:
+      - http:
+          method: get
+          path: users
+  createUserFn:
+    handler: dist/createUser.handler
+    name: user-api-dev-create-user
+    events:
+      - http:
+          method: post
+          path: user

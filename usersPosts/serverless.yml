@@ -1,0 +1,41 @@
+service: users-posts
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  stage: dev
+
+plugins:
+  - serverless-offline
+  - serverless-domain-manager
+
+custom:
+  customDomain:
+    domainName: <custom-domain-name>
+    basePath: 'user-post-management'
+    stage: ${self:provider.stage}
+    createRoute53Record: true
+
+package:
+  patterns:
+    - '!src/**'
+    - '!tests/**'
+    - '!tsconfig.json'
+    - '!jest.config.js'
+    - '!coverage/**'
+
+functions:
+  getAllUsersPostsFn:
+    handler: dist/getAllUsersPosts.handler
+    name: user-api-dev-get-usersPosts
+    events:
+      - http:
+          method: get
+          path: users-posts
+  attachPostsToUserFn:
+    handler: dist/attachPostsToUser.handler
+    name: user-api-dev-create-attachPostsToUser
+    events:
+      - http:
+          method: post
+          path: user-post

@@ -1,0 +1,35 @@
+{
+  "name": "@ksr/shared",
+  "version": "0.0.22",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rimraf ./dist && tsc -p tsconfig-build.json",
+    "dev": "ts-node-dev ./src/index.ts",
+    "start": "npm run build && node dist/index.js",
+    "co:login": "aws codeartifact login --tool npm --repository <YOUR-REPO-NAME> --domain <YOUR-DOMAIN> --domain-owner <ACCOUNT-ID>",
+    "update:repo": "npm run build && npm publish",
+    "test": "jest --coverage"
+  },
+  "files": [
+    "dist/*"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^28.1.1",
+    "jest": "^28.1.1",
+    "mongodb-memory-server": "^8.6.1",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^28.0.5",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.7.3"
+  },
+  "dependencies": {
+    "@typegoose/typegoose": "^9.9.0",
+    "dotenv": "^16.0.1",
+    "inversify": "^6.0.1",
+    "mongoose": "^6.3.8"
+  }
+}

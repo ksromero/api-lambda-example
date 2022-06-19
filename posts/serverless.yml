@@ -1,0 +1,41 @@
+service: posts
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  stage: dev
+
+plugins:
+  - serverless-offline
+  - serverless-domain-manager
+
+custom:
+  customDomain:
+    domainName: <custom-domain-name>
+    basePath: 'post-management'
+    stage: ${self:provider.stage}
+    createRoute53Record: true
+
+package:
+  patterns:
+    - '!src/**'
+    - '!tests/**'
+    - '!tsconfig.json'
+    - '!jest.config.js'
+    - '!coverage/**'
+
+functions:
+  getAllPostsFn:
+    handler: dist/getAllPosts.handler
+    name: post-api-dev-get-posts
+    events:
+      - http:
+          method: get
+          path: posts
+  createPostFn:
+    handler: dist/createPost.handler
+    name: post-api-dev-create-post
+    events:
+      - http:
+          method: post
+          path: post
