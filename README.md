@@ -1,7 +1,7 @@
 
 # API Lambda Example
 
-This project contains a simple API for practice purpose and maybe for new learners like me exploring the aws serverless world. 
+This project contains a simple API for practice purpose and maybe for new learners like me who explores the aws serverless world. 
 
 A user can have N of posts and has a daily limit of posts
 that we can attach.
