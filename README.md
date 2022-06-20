@@ -45,7 +45,7 @@ Top folder is represented by module name `(except for repositories)`, each files
         └── tests
 **repositories folder**
 
-`repositories` folder represent the common codes used by each modules (users, posts, users posts)
+`repositories / @ksr/shared` folder or the private repository that represents the common codes used by each modules (users, posts, users posts)
 
 * `di` has files that are needed for dependency injection `e.g. container.ts`
 * `modules` has files that represent each module (I used [repository pattern](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design))
@@ -55,19 +55,42 @@ Top folder is represented by module name `(except for repositories)`, each files
 **Notes:** if we build or test the project there's additional folder included like `coverage` and `dist`
 ## API reference
 
-* <API_GATEWAY_URL>/user-management/users `// get all users // (GET)`
-* <API_GATEWAY_URL>/user-management/user `// create user // (POST)`
-  * `{ "name": "test", "dailyLimit": 2 }`
-* <API_GATEWAY_URL>/post-management/posts `// get all posts // (GET)`
-* <API_GATEWAY_URL>/post-management/post `// create post // (POST)`
-  * `{"title": "test6", "description": "desc6"}`
-* <API_GATEWAY_URL>/user-post-management/users-posts `// get all users posts // (GET)`
-* <API_GATEWAY_URL>/user-post-management/user-post `// attach post to user // (POST)`
-  * posts ids and user id
-  * `{
-      posts: ["62aace7f0406a73d0c3742ec", "62aad0631e145e6b829d2625"],
-    userId: "62aae23a7e64ab93f1b6eedc"}`
+**Get all users**
+* <API_GATEWAY_URL>/user-management/users `(GET)`
+
+**Create User**
+* <API_GATEWAY_URL>/user-management/user `(POST)`
+  ```
+  {
+    "name": "test",
+    "dailyLimit": 2
+  }
+  ```
+
+**Get all posts**
+* <API_GATEWAY_URL>/post-management/posts `(GET)`
+
+**Create post**
+* <API_GATEWAY_URL>/post-management/post `(POST)`
+  ```
+  {
+    "title": "test6",
+    "description": "desc6"
+  }
+  ```
+**Get all users posts**
+* <API_GATEWAY_URL>/user-post-management/users-posts `(GET)`
+
+**Attach posts to user**
+* <API_GATEWAY_URL>/user-post-management/user-post `(POST)`
+  ```
+  {
+    posts: ["62aace7f0406a73d0c3742ec", "62aad0631e145e6b829d2625"],
+    userId: "62aae23a7e64ab93f1b6eedc"
+  }
+  ```
 
 ## Todos maybe
 * `CI/CD` for each module and if we commit our code only the changed files under a specific module should be deployed (monorepo), I'm still exploring this and still not sure how to implement it lol.
 * `AWS cognito` for auth purpose and to protect the API's
+* multi envirnnment  setup
