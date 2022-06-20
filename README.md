@@ -93,4 +93,4 @@ Top folder is represented by module name `(except for repositories)`, each files
 ## Todos maybe
 * `CI/CD` for each module and if we commit our code only the changed files under a specific module should be deployed (monorepo), I'm still exploring this and still not sure how to implement it lol.
 * `AWS cognito` for auth purpose and to protect the API's
-* multi envirnnment  setup
+* multi environment  setup
