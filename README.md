@@ -11,7 +11,7 @@ that we can attach.
 ## Techs Used
 
 * [Node js](https://nodejs.org/en/) / [Typescript](https://www.typescriptlang.org/)
-* [AWS (Lambda, API Gateway, Route 53)](https://aws.amazon.com/)
+* [AWS (Lambda, API Gateway, Route 53, CodeArtifact)](https://aws.amazon.com/)
 * [Serverless Framework](https://github.com/serverless/serverless)
 
 **Main library used in Node js**
@@ -23,6 +23,10 @@ that we can attach.
 
 I used the [single purpose function](https://github.com/cdk-patterns/serverless/tree/main/the-lambda-trilogy)
 in lambda trilogy. Functions are grouped into module and each module are attached to an API gateway and [glued together using custom domain](https://www.serverless.com/blog/api-gateway-multiple-services/).
+
+I used [AWS CodeArtifact](https://aws.amazon.com/codeartifact/) to make a private repository called `ksr/shared` where all common codes reside, we can used it in each module to avoid repetition of codes and also this is where all the queries abstracted using repository pattern belonged.
+
+* One question that comes into my mind when making this is what if I needed the `createPost` method in the `createUser` method, well I just make a service in each module and just import it if needed in the future. By doing this I can avoid using the `lambda invoke (aws-sdk)` which will make the request more slower because it will initiate a new connection on the database.
 
 ![image](https://github.com/ksromero/api-lambda-example/blob/master/_pics-for-readme_/architecture.png)
 ## Folder structure
